@@ -35,4 +35,9 @@ public:
 
 	AAVL_Node* insert(AAVL_Node* p, int k);
 
+	AAVL_Node* findmin(AAVL_Node* p);
+
+	AAVL_Node* removemin(AAVL_Node* p);
+
+	AAVL_Node* remove(AAVL_Node* p, int k);
 };

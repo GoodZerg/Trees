@@ -35,12 +35,17 @@ int pow2(int a) {
 }
 
 void IBaseTreeInterface::ReFindH() {
+
+	if (!this->Head->IsValidLowLevel() || this->Head == nullptr) return;
+
+	
+
 	max_h = FindSubTreeH(Head, -1);
 
 	biggest_level_size = min_size * pow2(max_h);
 
-	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, FString::Printf(TEXT("Some variable values: max_h: %i, biggest_level_size: %i"), max_h, biggest_level_size));
-
+	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, FString::Printf(TEXT("max_h: %i, biggest_level_size: %i"), max_h, biggest_level_size));
+	Head->SetActorLocation(FVector(0, 0, 0));
 	SetChildsLocations(Head);
 }
 
@@ -56,12 +61,15 @@ int IBaseTreeInterface::FindSubTreeH(ABaseNodeInterface* p, int lastH) {
 void IBaseTreeInterface::SetChildsLocations(ABaseNodeInterface* p) {
 	if (p == nullptr) return;
 	FVector parent_location = p->GetActorLocation();
+	
 	if (p->left != nullptr) {
 		p->left->SetActorLocation(FVector(parent_location.X - (biggest_level_size/pow2(p->left->hight)), parent_location.Y, parent_location.Z - shift_height));
+		//GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, FString::Printf(TEXT("left: %i"), p->left->key));
 		SetChildsLocations(p->left);
 	}
 	if (p->right != nullptr) {
-		p->right->SetActorLocation(FVector(parent_location.X - (biggest_level_size / pow2(p->right->hight)), parent_location.Y, parent_location.Z - shift_height));
+		p->right->SetActorLocation(FVector(parent_location.X + (biggest_level_size / pow2(p->right->hight)), parent_location.Y, parent_location.Z - shift_height));
+		//GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, FString::Printf(TEXT("right: %i"), p->right->key));
 		SetChildsLocations(p->right);
 	}
 }

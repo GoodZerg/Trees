@@ -20,10 +20,11 @@ class TREEPROJECT_API IBaseTreeInterface {
 
 public:
 	// Sets default values for this actor's properties
+	UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
+	void InsertElement(int key);// PURE_VIRTUAL(UBaseTreeInterface::InsertElement, );
 
-	virtual void InsertElement(int key) = 0;// PURE_VIRTUAL(UBaseTreeInterface::InsertElement, );
-
-	virtual void DeleteElement(int key) = 0;// PURE_VIRTUAL(UBaseTreeInterface::DeleteElement, );
+	UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
+	void DeleteElement(int key);// PURE_VIRTUAL(UBaseTreeInterface::DeleteElement, );
 
 	void ReFindH();
 
@@ -34,10 +35,10 @@ public:
 	ABaseNodeInterface* Head = nullptr;
 
 	//UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
-	const int min_size = 150;
+	const int min_size = 60;
 
 	//UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
-	const int shift_height = 150;
+	const int shift_height = 110;
 
 	//UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
 	int max_h = 0;

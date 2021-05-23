@@ -4,17 +4,18 @@
 #include "Tree_AVL.h"
 
 
-void ATree_AVL::InsertElement(int key) {
+void ATree_AVL::InsertElement_Implementation(int key) {
   if (this->Head == nullptr) {
     Head = GetWorld()->SpawnActor<AAVL_Node>(NodeType);
     Head->key = key;
     //Head->hight = 1;
   } else {
-    dynamic_cast<AAVL_Node*>(this->Head)->insert(dynamic_cast<AAVL_Node*>(this->Head), key);
+    this->Head = dynamic_cast<AAVL_Node*>(this->Head)->insert(dynamic_cast<AAVL_Node*>(this->Head), key);
   }
   ReFindH();
 }
 
-void ATree_AVL::DeleteElement(int key) {
-  ;
+void ATree_AVL::DeleteElement_Implementation(int key) {
+  this->Head = dynamic_cast<AAVL_Node*>(this->Head)->remove(dynamic_cast<AAVL_Node*>(this->Head), key);
+  ReFindH();
 }

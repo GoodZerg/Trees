@@ -64,3 +64,33 @@ AAVL_Node* AAVL_Node::insert(AAVL_Node* p, int k) {
     p->right = insert(dynamic_cast<AAVL_Node*>(p->right), k);
   return balance(p);
 }
+
+AAVL_Node* AAVL_Node::findmin(AAVL_Node* p) {
+  return p->left ? findmin(dynamic_cast<AAVL_Node*>(p->left)) : p;
+}
+
+AAVL_Node* AAVL_Node::removemin(AAVL_Node* p) {
+  if (p->left == nullptr)
+    return dynamic_cast<AAVL_Node*>(p->right);
+  p->left = removemin(dynamic_cast<AAVL_Node*>(p->left));
+  return balance(p);
+}
+
+AAVL_Node* AAVL_Node::remove(AAVL_Node* p, int k) {
+  if (!p) return nullptr;
+  if (k < p->key) {
+    p->left = remove(dynamic_cast<AAVL_Node*>(p->left), k);
+  }  else if (k > p->key) {
+    p->right = remove(dynamic_cast<AAVL_Node*>(p->right), k);
+  } else {
+    AAVL_Node* q = dynamic_cast<AAVL_Node*>(p->left);
+    AAVL_Node* r = dynamic_cast<AAVL_Node*>(p->right);
+    p->Destroy();
+    if (!r) return q;
+    AAVL_Node* min = findmin(r);
+    min->right = removemin(r);
+    min->left = q;
+    return balance(min);
+  }
+  return balance(p);
+}

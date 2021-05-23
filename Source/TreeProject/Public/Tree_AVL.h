@@ -18,8 +18,9 @@ public:
 	UPROPERTY(EditDefaultsOnly)
 	TSubclassOf<AAVL_Node> NodeType;
 
-	UFUNCTION(BlueprintCallable)
-	virtual void InsertElement(int key) override;
+	UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
+	void InsertElement(int key);
 
-	virtual void DeleteElement(int key) override;
+	UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
+	void DeleteElement(int key);
 };
