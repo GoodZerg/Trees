@@ -23,4 +23,7 @@ public:
 
 	UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
 	void DeleteElement(int key);
+
+	UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
+	void SetVisibility(bool vis);
 };

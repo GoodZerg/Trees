@@ -15,6 +15,9 @@ ABaseNodeInterface::ABaseNodeInterface()
 
 	Sprite = CreateDefaultSubobject<UPaperSpriteComponent>(TEXT("Sprite"));
 
+	leftSpline =  CreateDefaultSubobject<USplineComponent>(TEXT("leftSpline"));
+	rightSpline = CreateDefaultSubobject<USplineComponent>(TEXT("rightSpline"));
+
 	
 	Sprite->AttachTo(Root);
 	//Sprite->SetRelativeLocation(FVector(0.0f, 0.0f, -7.0f));
@@ -40,6 +43,9 @@ ABaseNodeInterface::ABaseNodeInterface(int key) {
 
 	Sprite = CreateDefaultSubobject<UPaperSpriteComponent>(TEXT("Sprite"));
 
+
+	leftSpline = CreateDefaultSubobject<USplineComponent>(TEXT("Spline"));
+	rightSpline = CreateDefaultSubobject<USplineComponent>(TEXT("Spline"));
 
 
 	Sprite->AttachTo(Root);

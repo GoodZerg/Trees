@@ -19,3 +19,7 @@ void ATree_AVL::DeleteElement_Implementation(int key) {
   this->Head = dynamic_cast<AAVL_Node*>(this->Head)->remove(dynamic_cast<AAVL_Node*>(this->Head), key);
   ReFindH();
 }
+
+void ATree_AVL::SetVisibility_Implementation(bool vis) {
+  SetVisibilityElem(vis, Head);
+}

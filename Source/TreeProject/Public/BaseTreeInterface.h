@@ -26,6 +26,11 @@ public:
 	UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
 	void DeleteElement(int key);// PURE_VIRTUAL(UBaseTreeInterface::DeleteElement, );
 
+	UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
+	void SetVisibility(bool vis);
+
+	void SetVisibilityElem(bool vis, ABaseNodeInterface* p);
+
 	void ReFindH();
 
 	int FindSubTreeH(ABaseNodeInterface* p, int lastH);

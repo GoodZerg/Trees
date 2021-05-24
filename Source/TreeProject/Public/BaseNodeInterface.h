@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
 #include "PaperSpriteComponent.h"
+#include "Components/SplineComponent.h"
 #include "BaseNodeInterface.generated.h"
 
 UCLASS()
@@ -34,6 +35,11 @@ public:
 	UPROPERTY(EditAnywhere)
 	UPaperSpriteComponent* Sprite;
 
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
+	USplineComponent* leftSpline;
+	
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
+	USplineComponent* rightSpline;
 	
 protected:
 	// Called when the game starts or when spawned
