@@ -18,11 +18,11 @@ void ATree_Treap::InsertElement_Implementation(int key) {
   if (this->Head == nullptr) {
     Head = GetWorld()->SpawnActor<ATreap_Node>(NodeType);
     Head->key = key;
-    dynamic_cast<ATreap_Node*>(Head)->prior = rand();
+    dynamic_cast<ATreap_Node*>(Head)->prior = rand() % 1000;
   } else {
     ATreap_Node* new_node = GetWorld()->SpawnActor<ATreap_Node>(NodeType);
     new_node->key = key;
-    new_node->prior = rand();
+    new_node->prior = rand() % 1000;
     new_node->left = nullptr;
     new_node->right = nullptr;
     ABaseNodeInterface* left_tree, * right_tree;
